@@ -93,16 +93,20 @@ public class RecordList extends SortedLinkedList<Record>
 			return sessions;
 		}
 		for (int x=0; x<this.size(); x++) {
+			if (this.get(x)!=null && this.get(x).getUsername()!=null) {
 			if (this.get(x).isLogin() && this.get(x).getUsername().equals(user)){
 				Record login = this.get(x);
 				Record logout = null;
 				for (int i = 0; i<this.size(); i++) {
+					if (this.get(i)!=null && this.get(i).getUsername()!=null) {
 					if (this.get(i).getUsername().equals(user) && this.get(i).isLogout() && this.get(i).getTerminal()==this.get(x).getTerminal()) {
 						logout = this.get(i);
 						break;
 					}
+					}
 				}
 				sessions.add(new Session(login,logout));
+			}
 			}
 		}
 		if (sessions.size() == 0) {

@@ -62,9 +62,9 @@ public class LoginStats{
 		Scanner userinput = new Scanner(System.in);
 		String userValue = "";
 		//as long as user doesn't quit, loop will keep running
+		System.out.println("Options: \n first USERNAME: fetch data for first login \n last USERNAME: fetch data for most recent login \n all USERNAME: fetch all data for username \n total USERNAME: fetch total time spent \n quit: end the program");
 		while (!userValue.equalsIgnoreCase("quit")) {
 			try {
-				System.out.println("Options: \n first USERNAME: fetch data for first login \n last USERNAME: fetch data for most recent login \n all USERNAME: fetch all data for username \n total USERNAME: fetch total time spent \n quit: end the program");
 				userValue = userinput.nextLine();
 			if (userValue.equalsIgnoreCase("quit")) {
 				System.out.println("...quitting...");
