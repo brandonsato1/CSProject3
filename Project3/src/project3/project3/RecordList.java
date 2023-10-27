@@ -21,6 +21,7 @@ public class RecordList extends SortedLinkedList<Record>
 				else if (x.isLogout() && found == true && login.getTerminal()==x.getTerminal()) {
 					logout = x;
 					break;
+					//Checks for login then logout, then breaks the loop once both of them are found.
 				}
 			}
 		}
@@ -50,7 +51,7 @@ public class RecordList extends SortedLinkedList<Record>
 					}
 					login = this.get(i);
 					break;
-				}
+				}//Similar to getFirstSession, but works backward annd breaks once a login is found.
 			}
 		}
 		if (login == null) 
@@ -82,9 +83,9 @@ public class RecordList extends SortedLinkedList<Record>
 		
 	}
 	public SortedLinkedList<Session> getAllSessions(String user) throws NoSuchElementException, IllegalArgumentException {
+		try {
 		if (user == null || user.trim().equals(""))
 			throw new IllegalArgumentException();
-		
 		SortedLinkedList<Session> sessions = new SortedLinkedList<Session>();
 		for (int x=0; x<this.size(); x++) {
 			if (this.get(x).isLogin() && this.get(x).getUsername().equals(user)){
@@ -103,6 +104,10 @@ public class RecordList extends SortedLinkedList<Record>
 			throw new NoSuchElementException();
 		}
 		return sessions;
+		}
+		catch(Exception e) {
+			System.out.println("Null value detected");
+		}
 	}
 	
 	public String toString() {
