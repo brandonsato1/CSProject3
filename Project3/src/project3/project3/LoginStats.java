@@ -53,8 +53,8 @@ public class LoginStats{
 				list.add(  current  ); 
 			}
 			catch (IllegalArgumentException ex ) {
-				
-			}
+				System.out.println("Record inputted improperly");
+			} 
 		}
 		System.out.println("Data successfully loaded");
 		

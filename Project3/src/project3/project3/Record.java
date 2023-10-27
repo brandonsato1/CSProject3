@@ -8,12 +8,12 @@ public class Record implements  Comparable<Record>{
 	private boolean login;
 	
 	//constructor for record object
-	public Record(int terminal, boolean login, String username, Date time)throws Exception {
+	public Record(int terminal, boolean login, String username, Date time)throws IllegalArgumentException {
 		this.username = username;
 		this.time = time;
 		this.login = login;
 		if (terminal <=0)
-			throw new Exception();
+			throw new IllegalArgumentException();
 		this.terminal = terminal;
 		
 	}
