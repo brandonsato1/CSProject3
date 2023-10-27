@@ -298,7 +298,8 @@ public class SortedLinkedList<E extends Comparable<E>>
     	String s = "[";
         for (int x=0; x<this.size; x++) {
         	s += current.data.toString();
-        	s+= ", ";
+        	if (x!=this.size-1)
+        		s+= ", ";
         	current = current.next;
         }
         s+= "]";

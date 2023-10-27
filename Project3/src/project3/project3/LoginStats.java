@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class LoginStats{
 	public static void main(String[] args) throws IllegalArgumentException {
+		
+		//This code inputs the file, setting the argument given as the file name. 
 		if (args.length == 0 ) {
 			System.err.println("File name expected.\n");
 			System.exit(1);
@@ -59,7 +61,6 @@ public class LoginStats{
 		
 		Scanner userinput = new Scanner(System.in);
 		String userValue = "";
-		System.out.println(list);
 		//as long as user doesn't quit, loop will keep running
 		while (!userValue.equalsIgnoreCase("quit")) {
 			try {

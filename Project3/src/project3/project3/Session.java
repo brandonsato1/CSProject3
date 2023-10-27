@@ -82,17 +82,17 @@ public class Session implements Comparable<Session>{
 		int hours =(int) ((duration/(60*60*1000))%24);
 		int minutes =(int) ((duration/(60*1000))%60);
 		int seconds =(int) ((duration/1000)%60);
-		String fduration = days + " days " +  hours + " hours " + minutes + " minutes " + seconds + " seconds ";
+		String fduration = days + " days, " +  hours + " hours, " + minutes + " minutes, " + seconds + " seconds, ";
 		//tostring method. Prints different results for user still logged in and user that has logged out.
 		
 		
 		if (this.getLogoutTime()!=null) {
 			
-			String statement = " Username: " + username + " terminal: " + terminal + " \n duration: " + fduration + "\n" + "Login time: " + getLoginTime() + "\n" + "Logout time: " + getLogoutTime() + "\n";
+			String statement = " Username, " + username + " terminal " + terminal + ", duration: " + fduration + "\n" + "logged in: " + getLoginTime() + "\n" + "logged out: " + getLogoutTime() + "\n";
 			return statement;
 		}
 		else {
-			String statement = " Username: " + username + " terminal " + terminal + "\n" + "Login time: " + getLoginTime() + "\n" + " Still logged in " + "\n";
+			String statement = " Username, " + username + " terminal " + terminal + ", " + "logged in: " + getLoginTime() + "\n" + "logged out: Still logged in " + "\n";
 			return statement;
 		}
 		
