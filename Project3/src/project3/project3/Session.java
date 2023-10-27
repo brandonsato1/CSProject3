@@ -34,6 +34,8 @@ public class Session implements Comparable<Session>{
 		else {
 			throw new IllegalArgumentException();
 		}
+		
+		//Straightforward getter methods
 	}
 	public int getTerminal() {
 		return this.terminal;
@@ -62,9 +64,11 @@ public class Session implements Comparable<Session>{
 	public Record getLogin() {
 		return this.login; 
 	}
+	//Comparison based on difference in times. Negative time means this object is before the compared one.
 	public int compareTo(Session s) {
 		return(int) ( this.getLoginTime().getTime()- s.getLoginTime().getTime());
 	}
+	//Checks if logins and logout records are equal
 	public boolean equals(Session s) {
 		if (this.getLogin().equals(s.getLogin()) && this.getLogout().equals(s.getLogout())) {
 			return true;
