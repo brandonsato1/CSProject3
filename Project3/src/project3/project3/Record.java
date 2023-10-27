@@ -17,6 +17,7 @@ public class Record implements  Comparable<Record>{
 		this.terminal = terminal;
 		
 	}
+	//getter methods
 	public int getTerminal() {
 		return terminal;
 	}
@@ -38,10 +39,12 @@ public class Record implements  Comparable<Record>{
 		return time;
 		
 	}
+	//compares based on time difference
 	@Override
 	public int compareTo(Record o) {
 		return(int) ( this.getTime().getTime()- o.getTime().getTime());
 	}
+	//equality based on non-null and same values for each piece of data.
 	public boolean equals(Record o) {
 		if (o==null) {
 			return this == null;

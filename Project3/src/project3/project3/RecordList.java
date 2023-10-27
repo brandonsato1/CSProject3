@@ -85,17 +85,21 @@ public class RecordList extends SortedLinkedList<Record>
 		return totalTime;
 		
 	}
+	//
 	public SortedLinkedList<Session> getAllSessions(String user) throws NoSuchElementException, IllegalArgumentException {
 		SortedLinkedList<Session> sessions = new SortedLinkedList<Session>();
 		if (user == null )
 			throw new IllegalArgumentException();
 		else if(user.trim().equals("")) {
 			throw new IllegalArgumentException();
+			//checks for null cases
 		}
 		if (this.size()==0) {
 			return sessions;
 		}
 		for (int x=0; x<this.size(); x++) {
+			try {
+				//Loops through in double loop in order to find login and corrisponding logout
 			if (this.get(x)!=null) {
 			if (this.get(x).isLogin() && this.get(x).getUsername().equals(user)){
 				Record login = this.get(x);
@@ -111,9 +115,15 @@ public class RecordList extends SortedLinkedList<Record>
 				sessions.add(new Session(login,logout));
 			}
 			}
+			}
+			catch (Exception e) {
+				throw new IllegalArgumentException();
+			}
+			
 		}
 		if (sessions.size() == 0) {
 			throw new NoSuchElementException();
+			//in case that no elements are found
 		}
 		return sessions;
 	}

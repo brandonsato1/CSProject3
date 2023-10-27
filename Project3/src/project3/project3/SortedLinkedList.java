@@ -41,7 +41,7 @@ public class SortedLinkedList<E extends Comparable<E>>
     	if (element==null) {
     		return false;
     	}
-    	
+    	//deals with size 0 and size 1 cases
     	if (this.size()==0) {
     		head = new Node(element);
     		this.size+=1;
@@ -54,6 +54,7 @@ public class SortedLinkedList<E extends Comparable<E>>
     		this.size+=1;
     		return true;
     	}
+    	//iterates to desired position, sets the proper next and prev values for each of the Nodes
     	Node el = new Node(element);
 		Node current = head;
     	for (int x=0; x<this.size(); x++) {
@@ -89,6 +90,7 @@ public class SortedLinkedList<E extends Comparable<E>>
      * Removes all elements from the list.
      */
     public void clear() {
+    	//Comes in with a hammer and sets everything to null
         if (this.size()==0) {
         	System.out.println("No Elements in list");
         }
@@ -118,7 +120,7 @@ public class SortedLinkedList<E extends Comparable<E>>
      */
     
     
-  
+  //iterates through to detect first instance of o
     public boolean contains(Object o) {
         Node current = head;
         for (int x = 0; x<this.size(); x++) {
@@ -138,6 +140,7 @@ public class SortedLinkedList<E extends Comparable<E>>
      * @throw IndexOutOfBoundsException  if the index is out of
      * range <code>(index < 0 || index >= size())</code>
      */
+    //iterates to a specific index
     public E get(int index) throws IndexOutOfBoundsException {
     	if (head == null){
     		throw new IndexOutOfBoundsException();
@@ -201,6 +204,7 @@ public class SortedLinkedList<E extends Comparable<E>>
      * @return <code>true</code> if the element was removed successfully,
      * <code>false</code> otherwise
      */
+    //removes an object (sets it to null) and sets each next and prev to its proper spot
     public boolean remove(Object o) {
     	Node current = head;
     	if (this.size()==0) {
@@ -268,6 +272,7 @@ public class SortedLinkedList<E extends Comparable<E>>
      * @return <code>true</code> if the specified object is equal to this list,
      * <code>false</code> otherwise
      */
+    //checks for equality using size, and then iterating through each individual object
     public boolean equals(Object o) {
     	if(!( o instanceof SortedLinkedList)){
     		return false;
@@ -297,6 +302,7 @@ public class SortedLinkedList<E extends Comparable<E>>
      *
      * @return a string representation of the list
      */
+    //formats and prints each individual item
     public String toString() {
     	Node current = this.head;
     	String s = "[";

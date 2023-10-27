@@ -49,6 +49,7 @@ public class LoginStats{
 				System.err.println(line);
 				continue;
 			}
+			//adds the data to the linked list
 			try {
 				Record current = new Record(Math.abs(terminal),terminal>0,name, new Date(time));
 				list.add(  current  ); 
@@ -70,19 +71,24 @@ public class LoginStats{
 				System.out.println("...quitting...");
 				System.exit(1);
 			}
+			
+			//returns all method
 			else if (userValue.substring(0,3).equalsIgnoreCase("all")) {
 				String username = userValue.substring(4,userValue.length()).trim();
 				System.out.println(list.getAllSessions(username));
 			}
+			//returns last method
 			else if (userValue.substring(0,4).equalsIgnoreCase("last")){
 				String username = userValue.substring(5,userValue.length()).trim();
 				System.out.println(list.getLastSession(username));
 			}
+			//returns first session method
 			else if (userValue.substring(0,5).equalsIgnoreCase("first")) {
 				String username = userValue.substring(6,userValue.length()).trim();
 				System.out.println(list.getFirstSession(username));
 			}
 			
+			//formats date, returns total time method
 			else if (userValue.substring(0,5).equalsIgnoreCase("total")) {
 				String username = userValue.substring(6,userValue.length()).trim();
 				long duration = list.getTotalTime(username);
@@ -95,6 +101,7 @@ public class LoginStats{
 				
 				System.out.println("Username: "+username+ " Duration: " +fduration);
 			}
+			//cases of program going wrong
 			else {
 				System.out.println("Invalid input. Please enter one of the valid commands");
 			}}

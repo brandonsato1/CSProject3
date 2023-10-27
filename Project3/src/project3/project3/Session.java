@@ -92,11 +92,11 @@ public class Session implements Comparable<Session>{
 		
 		if (this.getLogoutTime()!=null) {
 			
-			String statement = "  Username, " + username + " terminal " + terminal + ", duration " + fduration + "\n" + "    logged in: " + getLoginTime() + "\n" + "    logged out: " + getLogoutTime() + "\n";
+			String statement = "\n" + username + ", terminal " +  terminal + " duration " + duration + fduration + "\n" + " logged in: " + getLoginTime() + "\n" + " logged out: " + getLogoutTime() + "\n\n";
 			return statement;
 		}
 		else {
-			String statement = " Username, " + username + " terminal " + terminal + ", " + "logged in: " + getLoginTime() + "\n" + "logged out: Still logged in " + "\n";
+			String statement =  "\n" + username + " terminal " + terminal +"\n"+ " logged in:" + getLoginTime() + "\n" + " logged out: Still logged in " + "\n\n";
 			return statement;
 		}
 		
