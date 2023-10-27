@@ -18,7 +18,7 @@ public class RecordList extends SortedLinkedList<Record>
 					found = true;
 					login = x;
 				}
-				else if (x.isLogout() && found == true && login.getTerminal()==-x.getTerminal()) {
+				else if (x.isLogout() && found == true && login.getTerminal()==x.getTerminal()) {
 					logout = x;
 					break;
 				}
@@ -45,8 +45,8 @@ public class RecordList extends SortedLinkedList<Record>
 				}
 				else if (this.get(i).isLogin()) {
 					if (found == true) {
-						if (this.get(i).getTerminal()!=-logout.getTerminal())
-							continue;
+						if (this.get(i).getTerminal()!=logout.getTerminal())
+							logout = null;
 					}
 					login = this.get(i);
 					break;
@@ -91,7 +91,7 @@ public class RecordList extends SortedLinkedList<Record>
 				Record login = this.get(x);
 				Record logout = null;
 				for (int i = 0; i<this.size(); i++) {
-					if (this.get(i).getUsername().equals(user) && this.get(i).isLogout() && this.get(i).getTerminal()==-this.get(x).getTerminal()) {
+					if (this.get(i).getUsername().equals(user) && this.get(i).isLogout() && this.get(i).getTerminal()==this.get(x).getTerminal()) {
 						logout = this.get(i);
 						break;
 					}

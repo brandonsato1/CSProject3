@@ -53,7 +53,7 @@ public class SortedLinkedList<E extends Comparable<E>>
     	Node el = new Node(element);
 		Node current = head;
     	for (int x=0; x<this.size(); x++) {
-    		if (el.compareTo(current) == 1 ) {
+    		if (el.compareTo(current) < 0 ) {
     			if (current.prev != null) {
         			el.prev = current.prev;
         			current.prev = el;
@@ -265,7 +265,6 @@ public class SortedLinkedList<E extends Comparable<E>>
      * <code>false</code> otherwise
      */
     public boolean equals(Object o) {
-        // TODO: Implement this method
     	if(!( o instanceof SortedLinkedList)){
     		return false;
 

@@ -13,7 +13,7 @@ public class Session implements Comparable<Session>{
 	public Session (Record login, Record logout) throws IllegalArgumentException {
 		if (login!=null) {
 			if (logout != null) {
-				if (!(login.getUsername().equals(logout.getUsername()) && login.getTerminal( )== -logout.getTerminal() && logout.getTime().after(login.getTime())))
+				if (!(login.getUsername().equals(logout.getUsername()) && login.getTerminal( )== logout.getTerminal() && logout.getTime().after(login.getTime())))
 				{
 					throw new IllegalArgumentException();
 				}

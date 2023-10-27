@@ -7,12 +7,11 @@ import java.util.Scanner;
 
 public class LoginStats{
 	public static void main(String[] args) throws IllegalArgumentException {
-		if (args.length == 0 ) {
-			System.err.println("File name expected.\n");
-			System.exit(1);
-		}
-
-		File file = new File(args[0]);
+		//if (args.length == 0 ) {
+		//	System.err.println("File name expected.\n");
+		//	System.exit(1);
+		//}
+		File file = new File("Project2sample.txt");
 		if (!file.exists()){
 			System.err.println("File does not exist.\n");
 			System.exit(1);
@@ -60,7 +59,7 @@ public class LoginStats{
 		
 		Scanner userinput = new Scanner(System.in);
 		String userValue = "";
-		
+		System.out.println(list);
 		//as long as user doesn't quit, loop will keep running
 		while (!userValue.equalsIgnoreCase("quit")) {
 			try {
