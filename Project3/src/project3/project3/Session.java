@@ -2,13 +2,13 @@ package project3;
 import java.util.Date;
 public class Session implements Comparable<Session>{
 	//session data
-	int terminal;
-	Date loginTime;
-	Date logoutTime;
-	String username;
-	long duration;
-	Record login;
-	Record logout;
+	int terminal = 0;
+	Date loginTime = null;
+	Date logoutTime = null;
+	String username = "";
+	long duration = 0;
+	Record login = null;
+	Record logout = null;
 	//session csontructor
 	public Session (Record login, Record logout) throws IllegalArgumentException {
 		if (login!=null) {
@@ -36,39 +36,35 @@ public class Session implements Comparable<Session>{
 		}
 	}
 	public int getTerminal() {
-		return terminal;
+		return this.terminal;
 	}
 
 	public Date getLoginTime() {
-		return loginTime;
+		return this.loginTime;
 	}
 
 	public Date getLogoutTime() {
-		return logoutTime;
+		return this.logoutTime;
 	}
 
 	public String getUsername() {
-		return username;
+		return this.username;
 	}
 
 	public long getDuration() {
-		return duration;
+		return this.duration;
 	}
 	
 	public Record getLogout() {
-		return logout;
+		return this.logout;
 	}
 	
 	public Record getLogin() {
-		return login; 
+		return this.login; 
 	}
 	
 	public int compareTo(Session s) {
-		if (this.getLoginTime().before(s.getLoginTime()))
-		return 1;
-		else {
-			return -1;
-		}
+		return(int) ( this.getLoginTime().getTime()- s.getLoginTime().getTime());
 	}
 	public boolean equals(Session s) {
 		if (this.getLogin().equals(s.getLogin()) && this.getLogout().equals(s.getLogout())) {
@@ -93,7 +89,7 @@ public class Session implements Comparable<Session>{
 		
 		if (this.getLogoutTime()!=null) {
 			
-			String statement = " Username: " + username + " terminal: " + terminal + " \n duration: " + fduration + "\n" + "Logout time: " + getLogoutTime() + "\n" + "Login time: " + getLoginTime() + "\n";
+			String statement = " Username: " + username + " terminal: " + terminal + " \n duration: " + fduration + "\n" + "Login time: " + getLoginTime() + "\n" + "Logout time: " + getLogoutTime() + "\n";
 			return statement;
 		}
 		else {

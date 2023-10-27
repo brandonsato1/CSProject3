@@ -30,12 +30,11 @@ public class RecordList extends SortedLinkedList<Record>
 		
 	} 
 	public Session getLastSession(String user) throws IllegalArgumentException, NoSuchElementException {
-		if (user == null || user.equals(""))
+		if (user == null || user.equals(" "))
 			throw new IllegalArgumentException();
 		boolean found = false;
 		Record login = null;
 		Record logout = null;
-		System.out.println(user);
 		//loop that iterates from back to front for equal terminals and usernames
 		
 		for (int i=this.size()-1; i>=0; i--) {
@@ -66,14 +65,15 @@ public class RecordList extends SortedLinkedList<Record>
 		boolean found = false;
 		long totalTime = 0;
 		for (int x = 0; x<this.size(); x++) {
-			if (this.get(x).isLogin())
+			if (this.get(x).isLogin()&& this.get(x).getUsername().equals(user)) {
 				for (int i=0; i<this.size(); i++) {
-					if (this.get(i).isLogout() && this.get(i).getTerminal()==-this.get(x).getTerminal() && this.get(i).getUsername().equals(user)){
+					if (this.get(i).isLogout() && this.get(i).getTerminal()==this.get(x).getTerminal() && this.get(i).getUsername().equals(user)){
 						totalTime += this.get(i).getTime().getTime() - this.get(x).getTime().getTime();
 						found = true;
 						break;
 					}
 				}
+			}
 		}
 		if (found == false) {
 			throw new NoSuchElementException();
@@ -96,7 +96,7 @@ public class RecordList extends SortedLinkedList<Record>
 						break;
 					}
 				}
-				sessions.add(new Session(this.get(x),logout));
+				sessions.add(new Session(login,logout));
 			}
 		}
 		if (sessions.size() == 0) {

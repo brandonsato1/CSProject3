@@ -8,12 +8,13 @@ public class Record implements  Comparable<Record>{
 	private boolean login;
 	
 	//constructor for record object
-	public Record(int terminal, boolean login, String username, Date time) {
+	public Record(int terminal, boolean login, String username, Date time)throws Exception {
 		this.username = username;
 		this.time = time;
-		this.terminal = terminal;
 		this.login = login;
-		
+		if (terminal <=0)
+			throw new Exception();
+		this.terminal = terminal;
 		
 	}
 	public int getTerminal() {
@@ -39,16 +40,10 @@ public class Record implements  Comparable<Record>{
 	}
 	@Override
 	public int compareTo(Record o) {
-		if (this.getTime().before(o.getTime())) {
-			return 1;
-			}
-		else {
-			return -1;
-		}
+		return(int) ( this.getTime().getTime()- o.getTime().getTime());
 	}
-	
 	public boolean equals(Record o) {
-		if (this.getUsername().equalsIgnoreCase(username) && this.isLogin()==o.isLogin() && this.getTime().equals(o.getTime()) && this.getTerminal() == o.getTerminal()) {
+		if (this.getUsername().equalsIgnoreCase(o.getUsername()) && this.isLogin()==o.isLogin() && this.getTime().equals(o.getTime()) && this.getTerminal() == o.getTerminal()) {
 			return true;
 		}
 		else {
