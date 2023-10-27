@@ -62,7 +62,6 @@ public class Session implements Comparable<Session>{
 	public Record getLogin() {
 		return this.login; 
 	}
-	
 	public int compareTo(Session s) {
 		return(int) ( this.getLoginTime().getTime()- s.getLoginTime().getTime());
 	}

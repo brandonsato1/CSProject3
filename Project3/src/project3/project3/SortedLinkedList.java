@@ -118,7 +118,7 @@ public class SortedLinkedList<E extends Comparable<E>>
     public boolean contains(Object o) {
         Node current = head;
         for (int x = 0; x<this.size(); x++) {
-        	if (current.equals(o)){
+        	if (current.data.equals(o)){
         		return true;
         	}
         	current = current.next;
@@ -135,16 +135,16 @@ public class SortedLinkedList<E extends Comparable<E>>
      * range <code>(index < 0 || index >= size())</code>
      */
     public E get(int index) throws IndexOutOfBoundsException {
+    	if (head == null){
+    		throw new IndexOutOfBoundsException();
+    	}
     	Node current = head;
-        try {
         	for (int x = 0; x<index; x++) {
+        		if (current.next==null)
+        			throw new IndexOutOfBoundsException();
         		current = current.next;
         	}
         	return current.data;
-        }
-    	catch (IndexOutOfBoundsException e) {
-    		throw e;
-    	}
     }
 
     /**
@@ -269,15 +269,16 @@ public class SortedLinkedList<E extends Comparable<E>>
     		return false;
 
     	}
-    	
+    	if (((SortedLinkedList) o).size()==0){
+    		if (this.size() ==0) {
+    			return true;
+    		}
+    		return false;
+    	}
     	if (((SortedLinkedList) o).size()==this.size()) {
-    		Node c1 = ((SortedLinkedList)o).head;
-    		Node c2 = this.head;
     		for (int x=0; x<this.size(); x++) {
-    			if (!c1.equals(c2))
+    			if (!(this.get(x).equals(((SortedLinkedList) o).get(x))))
     				return false;
-    			c1 = c1.next;
-    			c2 = c2.next;
     		}
     		return true;
     	}
@@ -297,6 +298,7 @@ public class SortedLinkedList<E extends Comparable<E>>
     	String s = "[";
         for (int x=0; x<this.size; x++) {
         	s += current.data.toString();
+        	s+= ", ";
         	current = current.next;
         }
         s+= "]";

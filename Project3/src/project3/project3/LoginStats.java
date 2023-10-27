@@ -7,11 +7,11 @@ import java.util.Scanner;
 
 public class LoginStats{
 	public static void main(String[] args) throws IllegalArgumentException {
-		//if (args.length == 0 ) {
-		//	System.err.println("File name expected.\n");
-		//	System.exit(1);
-		//}
-		File file = new File("Project2sample.txt");
+		if (args.length == 0 ) {
+			System.err.println("File name expected.\n");
+			System.exit(1);
+		}
+		File file = new File(args[0]);
 		if (!file.exists()){
 			System.err.println("File does not exist.\n");
 			System.exit(1);
