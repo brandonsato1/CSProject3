@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class LoginStats{
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IllegalArgumentException {
 		if (args.length == 0 ) {
 			System.err.println("File name expected.\n");
 			System.exit(1);
