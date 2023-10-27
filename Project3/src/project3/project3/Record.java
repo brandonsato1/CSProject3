@@ -46,7 +46,9 @@ public class Record implements  Comparable<Record>{
 		if (o==null) {
 			return this == null;
 		}
-		if (this.getUsername().equalsIgnoreCase(o.getUsername()) && this.isLogin()==o.isLogin() && this.getTime().getTime()==o.getTime().getTime() && this.getTerminal() == o.getTerminal()) {
+		if (o.getUsername()==null || o.getTime()==null)
+			return false;
+		if (this.getUsername().equals(o.getUsername()) && this.isLogin()==o.isLogin() && this.getTime().getTime()==o.getTime().getTime() && this.getTerminal() == o.getTerminal()) {
 			return true;
 		}
 		else {

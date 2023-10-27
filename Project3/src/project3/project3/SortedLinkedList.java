@@ -38,6 +38,10 @@ public class SortedLinkedList<E extends Comparable<E>>
      * <code>false</code> otherwise (if <code>element==null</code>)
      */
     public boolean add(E element) {
+    	if (element==null) {
+    		return false;
+    	}
+    	
     	if (this.size()==0) {
     		head = new Node(element);
     		this.size+=1;
@@ -298,7 +302,7 @@ public class SortedLinkedList<E extends Comparable<E>>
     	String s = "[";
         for (int x=0; x<this.size; x++) {
         	s += current.data.toString();
-        	if (x!=this.size-1)
+        	if (x!=this.size-2)
         		s+= ", ";
         	current = current.next;
         }
