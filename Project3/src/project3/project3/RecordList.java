@@ -63,8 +63,11 @@ public class RecordList extends SortedLinkedList<Record>
 		
 		if (user == null || user.trim().equals(""))
 			throw new IllegalArgumentException();
+		//ensures there are no null values
 		boolean found = false;
 		long totalTime = 0;
+		
+		//Double loop that finds login and corrisponding logout multiple times. Slightly inefficient but seems to be the most straightforward implementation.
 		for (int x = 0; x<this.size(); x++) {
 			if (this.get(x).isLogin()&& this.get(x).getUsername().equals(user)) {
 				for (int i=0; i<this.size(); i++) {
@@ -84,9 +87,11 @@ public class RecordList extends SortedLinkedList<Record>
 	}
 	public SortedLinkedList<Session> getAllSessions(String user) throws NoSuchElementException, IllegalArgumentException {
 		SortedLinkedList<Session> sessions = new SortedLinkedList<Session>();
-		try {
 		if (user == null || user.trim().equals(""))
 			throw new IllegalArgumentException();
+		if (this.size()==0) {
+			return sessions;
+		}
 		for (int x=0; x<this.size(); x++) {
 			if (this.get(x).isLogin() && this.get(x).getUsername().equals(user)){
 				Record login = this.get(x);
@@ -102,10 +107,6 @@ public class RecordList extends SortedLinkedList<Record>
 		}
 		if (sessions.size() == 0) {
 			throw new NoSuchElementException();
-		}
-		}
-		catch(Exception e) {
-			System.out.println("Null value detected");
 		}
 		return sessions;
 	}
