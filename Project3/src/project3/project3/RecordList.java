@@ -83,10 +83,10 @@ public class RecordList extends SortedLinkedList<Record>
 		
 	}
 	public SortedLinkedList<Session> getAllSessions(String user) throws NoSuchElementException, IllegalArgumentException {
+		SortedLinkedList<Session> sessions = new SortedLinkedList<Session>();
 		try {
 		if (user == null || user.trim().equals(""))
 			throw new IllegalArgumentException();
-		SortedLinkedList<Session> sessions = new SortedLinkedList<Session>();
 		for (int x=0; x<this.size(); x++) {
 			if (this.get(x).isLogin() && this.get(x).getUsername().equals(user)){
 				Record login = this.get(x);
@@ -103,11 +103,11 @@ public class RecordList extends SortedLinkedList<Record>
 		if (sessions.size() == 0) {
 			throw new NoSuchElementException();
 		}
-		return sessions;
 		}
 		catch(Exception e) {
 			System.out.println("Null value detected");
 		}
+		return sessions;
 	}
 	
 	public String toString() {
